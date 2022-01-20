@@ -12,7 +12,7 @@ import (
 func TestTerraformS3AndEC2Tags(t *testing.T) {
 	
 	options := &terraform.Options{
-		TerraformDir: "../examples/plan",
+		TerraformDir: "../terraform-flugel-1",
 	}
 
 	defer terraform.Destroy(t, options)
@@ -31,11 +31,16 @@ func TestTerraformS3AndEC2Tags(t *testing.T) {
 	
 
 	region := "us-west-2"
-	expectedTagKey1 := "Name"
-	expectedTagValue1 := "Flugel"
-	expectedTagKey2 := "Owner"
-	expectedTagValue2 := "InfraTeam"
+	//expectedTagKey1 := "Name"
+	//expectedTagValue1 := "Flugel"
+	//expectedTagKey2 := "Owner"
+	///expectedTagValue2 := "InfraTeam"
 
+	tags := make(map[string]string)
+
+	tags["Name"] = "Flugel"
+	tags["Owner"] = "InfraTeam"
+	
 
 	bucketID := terraform.Output(t, options, "bucket_id")
 	actualBucketTags := aws.GetS3BucketTags(t, region, bucketID)
@@ -43,10 +48,15 @@ func TestTerraformS3AndEC2Tags(t *testing.T) {
 	instanceID := terraform.Output(t, options, "instance_id")
 	actualInstanceTags := aws.GetTagsForEc2Instance(t, region, instanceID)
 
-	
-	assert.Equal(t, expectedTagValue1, actualBucketTags[expectedTagKey1]  )
-	assert.Equal(t, expectedTagValue1, actualInstanceTags[expectedTagKey1])
-	assert.Equal(t, expectedTagValue2, actualBucketTags[expectedTagKey2]  )
-	assert.Equal(t, expectedTagValue2, actualInstanceTags[expectedTagKey2])
+	// Verify that our expected name tag is one of the tags
+	//nameTag, containsNameTag := actualBucketTags[tags]
+	//assert.True(t, containsNameTag)
+	assert.Equal(t, tags, actualBucketTags)
+	assert.Equal(t, tags, actualInstanceTags)
+
+	//assert.Equal(t, expectedTagValue1, actualBucketTags[expectedTagKey1]  )
+	//assert.Equal(t, expectedTagValue1, actualInstanceTags[expectedTagKey1])
+	//assert.Equal(t, expectedTagValue2, actualBucketTags[expectedTagKey2]  )
+	//assert.Equal(t, expectedTagValue2, actualInstanceTags[expectedTagKey2])
 
 }
