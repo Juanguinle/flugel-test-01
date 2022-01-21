@@ -26,6 +26,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Go Test
-        run: /
+        run: 
           cd test
           go test -v
