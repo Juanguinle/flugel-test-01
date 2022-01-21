@@ -19,7 +19,7 @@ jobs:
         go-version: 1.17
 
     - name: cambiar directorio
-      run: cd ./test
+      run: cd test
 
     - name: leer directorio
       run: ls
