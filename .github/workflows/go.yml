@@ -2,27 +2,26 @@ name: Go
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.17
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
 
-    - name: cambiar directorio
-      run: cd test
+      - name: cambiar directorio
+        run: cd test
 
-    - name: leer directorio
-      run: ls
-    
-    - name: go version
-      run: go version
+      - name: leer directorio
+        run: ls test
+
+      - name: go version
+        run: go version
