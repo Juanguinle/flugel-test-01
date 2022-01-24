@@ -23,8 +23,8 @@ jobs:
       - name: leer directorio
         run: ls test
 
-      - name: lanzar go test
-        run: go test -v
+      - name: pwd
+        run: pwd
 
       - name: go version
         run: go version
