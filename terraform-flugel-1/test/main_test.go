@@ -12,7 +12,7 @@ import (
 func TestTerraformS3AndEC2Tags(t *testing.T) {
 	
 	options := &terraform.Options{
-		TerraformDir: "../terraform-flugel-1",
+		TerraformDir: "../",
 	}
 
 	defer terraform.Destroy(t, options)
