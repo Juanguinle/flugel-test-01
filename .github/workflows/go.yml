@@ -24,7 +24,7 @@ jobs:
         run: ls test
 
       - name: lanzar go test
-        run: go test/test -v
+        run: go test -v
 
       - name: go version
         run: go version
