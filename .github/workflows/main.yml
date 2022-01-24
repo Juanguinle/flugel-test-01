@@ -24,17 +24,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
 
-      - name: leer directorio
-        run: ls
-
-      - name: pwd
-        run: pwd
-
-      - name: go version
-        run: go version
-
       - name: test
         run: go test -v
-
-      - name: echo GOMOD
-        run: echo $GOMOD
