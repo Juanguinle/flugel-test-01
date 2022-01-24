@@ -9,5 +9,3 @@
 # Crash log files
 *.log
 
-# Sensitive data
-*.tfvars
