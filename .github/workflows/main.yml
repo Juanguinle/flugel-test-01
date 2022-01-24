@@ -5,7 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-env: GOMOD:"/home/runner/work/flugel-test-01/go.mod"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +17,9 @@ jobs:
         with:
           go-version: 1.17
 
+      - name set GOMOD
+        run: echo "/home/runner/work/flugel-test-01/go.mod" >> $GOMOD
+        
       - name: leer directorio
         run: ls
 
