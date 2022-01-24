@@ -21,7 +21,7 @@ jobs:
         run: cd test
 
       - name: leer directorio
-        run: ls test
+        run: ls
 
       - name: pwd
         run: pwd
